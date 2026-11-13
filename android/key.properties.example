@@ -1,0 +1,7 @@
+# Copy to android/key.properties and fill in real values for a production-signed release.
+# Do not commit key.properties or *.jks.
+
+storePassword=cliff@0759466446
+keyPassword=cliff@0759466446
+keyAlias=upload
+storeFile=../../fedha3.jks

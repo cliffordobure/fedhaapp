@@ -1,0 +1,94 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+    id "com.google.gms.google-services"
+}
+
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader('UTF-8') { reader ->
+        localProperties.load(reader)
+    }
+}
+
+def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
+if (flutterVersionCode == null) {
+    flutterVersionCode = '1'
+}
+
+def flutterVersionName = localProperties.getProperty('flutter.versionName')
+if (flutterVersionName == null) {
+    flutterVersionName = '1.0'
+}
+
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file('key.properties')
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
+def releaseKeystoreFile = keystoreProperties['storeFile']
+        ? file(keystoreProperties['storeFile'])
+        : rootProject.file('../fedha3.jks')
+
+android {
+    namespace "com.example.fedha"
+    compileSdkVersion 36
+    ndkVersion flutter.ndkVersion
+
+    compileOptions {
+        coreLibraryDesugaringEnabled true
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    defaultConfig {
+        applicationId "com.fedha.fedhatrac"
+        minSdkVersion flutter.minSdkVersion
+        targetSdkVersion flutter.targetSdkVersion
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+        multiDexEnabled true
+    }
+
+    signingConfigs {
+        release {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile releaseKeystoreFile
+            storePassword keystoreProperties['storePassword']
+        }
+    }
+    buildTypes {
+        release {
+            // Use production keystore when present; otherwise debug signing
+            // so local `flutter build apk` still works for client testing.
+            if (keystorePropertiesFile.exists() && releaseKeystoreFile.exists()) {
+                signingConfig signingConfigs.release
+            } else {
+                signingConfig signingConfigs.debug
+                println("WARNING: Release keystore/config missing (looked for " + releaseKeystoreFile + " + android/key.properties); using debug signing for this build.")
+            }
+        }
+    }
+}
+
+flutter {
+    source '../..'
+}
+
+dependencies {
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.4'
+    implementation 'com.google.android.material:material:1.9.0'
+    implementation "androidx.multidex:multidex:2.0.1"
+}

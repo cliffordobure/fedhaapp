@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "914633471562",
+    "project_id": "fedhatrac-d102b",
+    "storage_bucket": "fedhatrac-d102b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:914633471562:android:96d46709823729978858b3",
+        "android_client_info": {
+          "package_name": "com.fedha.fedhatrac"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFhNwT5qbL36UvJQskHll6i6QY204lEYI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

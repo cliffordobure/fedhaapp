@@ -1,0 +1,78 @@
+.TH FLUTTER-RUNNER 1 "October 2024" "1.0" "Flutter Runner Manual"
+.SH NAME
+flutter-runner \- A script to build and run Flutter apps for iOS and Android.
+
+.SH SYNOPSIS
+.B flutter-runner
+[\-r platform] [\-b platform] [\-e extra_flags]
+
+.SH DESCRIPTION
+.B flutter-runner
+automates the process of building and running Flutter applications for iOS and Android platforms. It manages platform-specific tasks, including moving problematic files, excluding dependencies, and modifying specific files before building or running the app.
+
+.SH OPTIONS
+.TP
+.B \-r platform
+Run the app on the specified platform. Valid values are:
+.RS
+.IP
+**ios**: Runs the app on an iOS device or simulator.
+.IP
+**android**: Runs the app on an Android device or emulator.
+.RE
+
+.TP
+.B \-b platform
+Build the app for the specified platform. Valid values are:
+.RS
+.IP
+**ios**: Builds the app for iOS.
+.IP
+**android**: Builds the app for Android.
+.RE
+
+.TP
+.B \-e extra_flags
+Specify additional flags to pass to the Flutter command. This can be used to customize the build or run process.
+
+.SH EXAMPLES
+Run the app on iOS:
+.RS
+.nf
+flutter-runner -r ios
+.fi
+.RE
+
+Build the app for Android:
+.RS
+.nf
+flutter-runner -b android
+.fi
+.RE
+
+Run the app on Android with additional flags:
+.RS
+.nf
+flutter-runner -r android -e "--flavor production"
+.fi
+.RE
+
+.SH FILES
+.B pubspec.yaml
+Used to specify iOS-specific ignored files, ignored dependencies, and files to modify.
+
+.SH ENVIRONMENT
+Requires Flutter SDK to be installed and in the system PATH. For iOS builds, requires Xcode and CocoaPods. For Android builds, requires the Android SDK.
+
+.SH NOTES
+The script uses .B yq for YAML parsing. Ensure it is installed and accessible in the PATH.
+
+.SH SEE ALSO
+.B flutter(1), pod(1), yq(1)
+
+.SH AUTHOR
+[Levin]
+
+.SH BUGS
+Report bugs to [levinmutai@gmail.com].
+

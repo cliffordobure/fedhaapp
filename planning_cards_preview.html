@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Planning cards — no explanations</title>
+  <style>
+    body { margin:0; font-family:Segoe UI,system-ui,sans-serif; background:#dfe5e2; min-height:100vh; display:grid; place-items:center; padding:24px; }
+    .phone { width:360px; background:#f5f7f6; border-radius:28px; padding:20px 16px 28px; box-shadow:0 20px 50px rgba(0,0,0,.18); }
+    h1 { margin:0 0 4px; font-size:22px; color:#111827; }
+    .sec { margin:18px 0 10px; font-size:15px; font-weight:700; color:#111827; }
+    .card { display:flex; align-items:center; gap:12px; background:#fff; border-radius:16px; padding:14px 12px; margin-bottom:10px; box-shadow:0 3px 10px rgba(0,0,0,.04); border-left:4px solid var(--c); }
+    .ico { width:44px; height:44px; border-radius:12px; display:grid; place-items:center; background:var(--bg); color:var(--c); font-size:18px; }
+    .title { font-size:13.5px; font-weight:700; color:#111827; }
+    .sub { font-size:11.5px; color:#6b7280; margin-top:2px; }
+    .chev { margin-left:auto; width:32px; height:32px; border-radius:50%; display:grid; place-items:center; background:color-mix(in srgb, var(--c) 12%, white); color:var(--c); }
+    .note { margin-top:14px; font-size:12px; color:#6b7280; line-height:1.4; }
+  </style>
+</head>
+<body>
+  <div class="phone">
+    <h1>Choose a plan</h1>
+    <div class="sec">After</div>
+
+    <div class="card" style="--c:#0F9D58;--bg:#E6F6EC">
+      <div class="ico">🧾</div>
+      <div>
+        <div class="title">Bill Tracker</div>
+        <div class="sub">Track rent, utilities and other bills</div>
+      </div>
+      <div class="chev">›</div>
+    </div>
+
+    <div class="card" style="--c:#059669;--bg:#D1FAE5">
+      <div class="ico">📅</div>
+      <div class="title">Planned payments</div>
+      <div class="chev">›</div>
+    </div>
+
+    <div class="card" style="--c:#7B61FF;--bg:#F0ECFF">
+      <div class="ico">◐</div>
+      <div class="title">Budget</div>
+      <div class="chev">›</div>
+    </div>
+
+    <div class="card" style="--c:#3B82F6;--bg:#E8F1FF">
+      <div class="ico">◎</div>
+      <div>
+        <div class="title">My goals</div>
+        <div class="sub">Save toward what matters most</div>
+      </div>
+      <div class="chev">›</div>
+    </div>
+
+    <p class="note">Planned payments & Budget cards keep the title only — explanation lines removed. Screen headers for those pages no longer show the subtitle copy either.</p>
+  </div>
+</body>
+</html>
